@@ -21,7 +21,7 @@ jobs:
         run: npm ci
 
       - name: Generate Documentation
-        run: npx jsdoc -c jsdoc.json ./functions.js -d docs # Configure in `jsdoc.json`
+        run: npx jsdoc -c jsdoc.json ./script.js -d docs # Configure in `jsdoc.json`
 
       - name: Archive Documentation
         uses: actions/upload-artifact@v3
