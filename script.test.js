@@ -28,3 +28,10 @@ test("generateRandomNumber generates a random number within a range", () => {
   expect(randomNum).toBeGreaterThanOrEqual(1);
   expect(randomNum).toBeLessThanOrEqual(10);
 });
+
+test('capitalizeFirstLetter capitalizes the first letter of a string', () => {
+    expect(capitalizeFirstLetter('hello')).toBe('Hello');
+    expect(capitalizeFirstLetter('world')).toBe('World');
+    expect(capitalizeFirstLetter('')).toBe(''); // Empty string remains unchanged
+    expect(capitalizeFirstLetter(123)).toBe(123); // Non-string input remains unchanged
+  });

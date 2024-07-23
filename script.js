@@ -18,4 +18,9 @@ const generateRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min +1)) + min;
 }
 
-module.exports = { greetUser, calculateSum, isEven, reverseString, generateRandomNumber }; 
+const capitalizeFirstLetter = str => {
+    if(typeof str !== 'string' || str.length === 0) return str;
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+module.exports = { greetUser, calculateSum, isEven, reverseString, generateRandomNumber, capitalizeFirstLetter }; 
