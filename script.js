@@ -1,5 +1,5 @@
 const greetUser = name => {
-    console.log(`Hello ${name}! Welcome!`);
+    return `Hello, ${name}! Welcome!`;
 }
 
 const calculateSum = (a,b) => {
@@ -17,3 +17,5 @@ const reverseString = str => {
 const generateRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min +1)) + min;
 }
+
+module.exports = { greetUser, calculateSum, isEven, reverseString, generateRandomNumber }; 
