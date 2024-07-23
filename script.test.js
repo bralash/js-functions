@@ -3,7 +3,7 @@ const {
   calculateSum,
   isEven,
   reverseString,
-  generateRandomNumber,
+  generateRandomNumber, capitalizeFirstLetter
 } = require("./script");
 
 test("greetUser greets the user", () => {
