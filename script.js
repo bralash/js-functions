@@ -29,13 +29,14 @@ const isPalindrome = (str) => {
   return str === reversedStr;
 };
 
-const filterEvenNumbers = numbers => {
-  if (!Array.isArray(numbers)) {
-    throw new Error("Input must be an array of numbers");
+const getUniqueValues = (arr) => {
+  if (!Array.isArray(arr)) {
+    throw new Error("Input must be an array");
   }
 
-  return numbers.filter((num) => typeof num === "number" && num % 2 === 0);
-}
+  const uniqueSet = new Set(arr);
+  return Array.from(uniqueSet);
+};
 
 module.exports = {
   greetUser,
@@ -45,5 +46,5 @@ module.exports = {
   generateRandomNumber,
   capitalizeFirstLetter,
   isPalindrome,
-  filterEvenNumbers
+  getUniqueValues,
 };
