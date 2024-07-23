@@ -1,15 +1,16 @@
-name: Build and Test JavaScript Functions
+name: Test JS Functions and Notify Slack
 
 on: 
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
+  workflow_dispatch:
 
 jobs:
-  build-and-test:
+  test-and-notify:
     runs-on: ubuntu-latest
 
-    strategy: 
+    strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
 
@@ -21,11 +22,26 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'             # Cache dependencies
-          cache-dependency-path: package-lock.json # Cache based on lockfile
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: npm install 
 
       - name: Run tests
         run: npm test
+
+      - name: Notify Slack
+        if: always()  # Run even if tests fail
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          channel-id: 'C077F0UFSJG'
+          slack-message: |
+            Test Results for Node ${{ matrix.node-version }}:
+            ${{ job.status }}
+            ```
+            ${{ steps.test.outputs.summary }}
+            ```
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
