@@ -6,6 +6,7 @@ const {
   generateRandomNumber,
   capitalizeFirstLetter,
   isPalindrome,
+  filterEvenNumbers
 } = require("./script");
 
 test("greetUser greets the user", () => {
@@ -43,4 +44,18 @@ test("isPalindrome checks if a string is a palindrome", () => {
   expect(isPalindrome("A man, a plan, a canal: Panama")).toBe(true);
   expect(isPalindrome("hello")).toBe(false);
   expect(isPalindrome("12321")).toBe(true);
+});
+
+test("filterEvenNumbers filters even numbers from an array", () => {
+  expect(filterEvenNumbers([1, 2, 3, 4, 5])).toEqual([2, 4]);
+  expect(filterEvenNumbers([-2, 0, 5])).toEqual([-2, 0]);
+  expect(filterEvenNumbers([])).toEqual([]);
+
+  // Test error handling for invalid input
+  expect(() => filterEvenNumbers("not an array")).toThrow(
+    "Input must be an array of numbers"
+  );
+  expect(() => filterEvenNumbers([1, "a", 3])).toThrow(
+    "Input must be an array of numbers"
+  );
 });

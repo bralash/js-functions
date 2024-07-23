@@ -29,6 +29,14 @@ const isPalindrome = (str) => {
   return str === reversedStr;
 };
 
+const filterEvenNumbers = numbers => {
+  if (!Array.isArray(numbers)) {
+    throw new Error("Input must be an array of numbers");
+  }
+
+  return numbers.filter((num) => typeof num === "number" && num % 2 === 0);
+}
+
 module.exports = {
   greetUser,
   calculateSum,
@@ -36,5 +44,6 @@ module.exports = {
   reverseString,
   generateRandomNumber,
   capitalizeFirstLetter,
-  isPalindrome
+  isPalindrome,
+  filterEvenNumbers
 };
